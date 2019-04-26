@@ -9,7 +9,6 @@ export default class DashBoard extends React.Component {
       };
 
       gotoAddForm = (type, evt) => {
-          console.log('Aqui va');
           this.props.navigation.navigate('addForm', { type, evt });
       }
     render() {

@@ -7,13 +7,11 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform } from 'react-native';
 import { Provider } from 'react-redux';
-import configureStore from './store';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import { store, persistor } from './store';
 import Flow from './navigation';
-
-const store = configureStore()
-
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -26,7 +24,9 @@ export default class App extends Component {
   render() { 
     return (
       <Provider store={store}>
+         <PersistGate persistor={persistor}>
           <Flow instructions={instructions} />
+         </PersistGate>
       </Provider>
     );
   }
