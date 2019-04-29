@@ -21,9 +21,10 @@ const mainReducer = (state = initialState, action) => {
         registry: [...state.registry, action.data]
       };
     case REHYDRATE:
-      console.log(action);
+      const payload = action.payload && action.payload.main || {};
       return {
-        ...action.payload.main,
+        ...state,
+        ...payload,
       };
     default:
       return state;

@@ -18,6 +18,5 @@ export const addRegistry = (data) => {
     return {
         type: ADD_REGISTRY,
         data,
-
     }
 }

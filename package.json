@@ -1,11 +1,12 @@
 {
-  "name": "etkBudget",
+  "name": "etk-budget",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
+    "android2": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
     "build-android": "cd ./android && ./gradlew app:assembleRelease && ./gradlew installRelease",
+    "android":"react-native run-android",
     "test": "jest"
   },
   "dependencies": {

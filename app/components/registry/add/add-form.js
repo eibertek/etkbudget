@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { isFinite } from "lodash";
 import AntIcon from "react-native-vector-icons/AntDesign";
 import { Card, Button, Input  } from 'react-native-elements';
 
@@ -19,12 +18,19 @@ export default class AddRegistry extends React.Component {
 
     onChanged = (text, id, isNum) => {
         this.setState({
-            [id]: isNum === true ? text.replace(/[^\d.,-]/g,'') : text,
+            [id]: isNum === true ? parseFloat(text.replace(/[^\d.,-]/g,'')) : text,
         });
     }
 
     onClickOk = () => {
-        this.props.addRegistry(this.state);
+        const { amount, description, label } = this.state;
+        const type = this.props.navigation.getParam('type', 1);  
+        console.log(type);
+        this.props.addRegistry({
+            description,
+            label,
+            amount: (type > 0) ? amount : amount * -1,
+        });
         this.props.navigation.navigate('home');
     }
 
